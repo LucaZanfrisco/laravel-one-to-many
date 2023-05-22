@@ -59,7 +59,7 @@
                                 <a class="nav-link" style="{{ Route::current()->getName() === 'admin.project.index' ? 'color: red; text-decoration: underline' : ''}}" href="{{ route('admin.project.index') }}">{{ __('Progetti') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" style="{{ Route::current()->getName() === 'admin.type.index' ? 'color: red; text-decoration: underline' : ''}}" href="{{ route('admin.type.index') }}">{{ __('Tipologie') }}</a>
+                                <a class="nav-link" style="{{ Route::current()->getName() === 'admin.type.index' ? 'color: red; text-decoration: underline' : ''}}" href="{{ route('admin.types.index') }}">{{ __('Tipologie') }}</a>
                             </li>
                         @endguest
                     </ul>

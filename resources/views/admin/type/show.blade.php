@@ -1,40 +1,32 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-center border border-2 mt-3 rounded-4 p-4">
-            <ul class="list-unstyled ">
-                <li><a href="{{ route('admin.project.index')}}" class="btn btn-sm btn-danger">Back</a></li>
-                <li>
-                    <h2 class="my-4">
-                        {{ $project->nome }}
-                    </h2>
+    <div class="container border border-2 mt-3 rounded-4 p-4">
+        <a href="{{ route('admin.types.index') }}" class="btn btn-sm btn-danger">Back</a>
+        <h2 class="p-4">{{ $type->nome }}</h2>
+        <ul class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+            @foreach ($type->projects as $project)
+                <li class="card py-5 px-3">
+                    @isset($project->immagine)
+                        <img class="img-fluid m-4" src="{{ asset('storage/' . $project->immagine ) }}" alt="{{ $project->nome }}">
+                    @endisset
+                    <h3 class="fw-bold mb-4">{{ $project->nome }}</h3>
+                    <div class="my-3">{{ $project->descrizione }}</div>
+                    <div class="my-3">Data di creazione: {{ $project->data_di_creazione }}</div>
+                    @if ($project->completato == 1)
+                        <div> Completato:<span class="circle done"></span></div>
+                    @else
+                        <div> Completato:<span class="circle work"></span></div>
+                    @endif
+                    @if ($project->riscosso == 1)
+                        <div> Riscosso: <span class="circle done"></span></div>
+                    @else
+                        <div> Riscosso: <span class="circle done"></span></div>
+                    @endif
                 </li>
-                <li class="mb-4 text-secondary">
-                    <h3>{{ $project->type?->nome ?: 'Nessuna Tipologia' }}</h3>
-                </li>
-                <li>{{ $project->descrizione }}</li>
-                <li class="my-3">Creation Date : {{ $project->data_di_creazione }}</li>
-                @if ($project->completato == 1)
-                    <li class="d-flex align-items-center gap-2">  
-                        Completato: <div class="circle done"></div>
-                    </li>
-                @else
-                    <li class="d-flex align-items-center gap-2">
-                        Completato: <div class="circle work"></div>
-                    </li>
-                @endif
-                @if ($project->riscosso == 1)
-                    <li class="d-flex align-items-center gap-2">  
-                         Riscosso: <div class="circle done"></div>
-                    </li>
-                @else
-                    <li class="d-flex align-items-center gap-2">
-                        Riscosso: <div class="circle work"></div>
-                    </li>
-                @endif
-            </ul>
-            <div><img class="img-fluid" src="{{ asset('storage/' . $project->immagine) }}" alt=""></div>
-        </div>
-       
-    @endsection
+            @endforeach
+        </ul>
+
+
+    </div>
+@endsection

@@ -45,6 +45,7 @@ class ProjectController extends Controller
         $data = $request->validated();
         
         $project = new Project();
+        
         if(isset($data['immagine'])){
             $project->immagine = Storage::put('uploads', $data['immagine']);
         }

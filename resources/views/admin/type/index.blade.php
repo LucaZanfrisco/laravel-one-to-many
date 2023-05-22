@@ -4,9 +4,9 @@
     <div class="container">
         <div class="d-flex justify-content-between align-items-center my-4">
             <h2 class="fs-4 text-secondary">
-                Lista Progetti
+                Lista Tipologie
             </h2>
-            <a href="{{ route('admin.project.create') }}" class="btn btn-dark">Aggiungi Progetto</a>
+            <a href="{{ route('admin.types.create') }}" class="btn btn-dark">Aggiungi Tipologia</a>
         </div>
 
         @if (session('message'))
@@ -29,42 +29,32 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Data</th>
-                    <th scope="col">Completato</th>
+                    <th scope="col">Slug</th>
                     <th scope="col">Azioni</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($projects as $project)
+                @foreach ($types as $type)
                     <tr>
-                        <td>{{ $project->id }}</td>
-                        <td>{{ $project->nome }}</td>
-                        <td>{{ $project->data_di_creazione }}</td>
-                        @if ($project->completato == 1)
-                            <td>
-                                <div class="circle done"></div>
-                            </td>
-                        @else
-                            <td>
-                                <div class="circle work"></div>
-                            </td>
-                        @endif
+                        <td>{{ $type->id }}</td>
+                        <td>{{ $type->nome }}</td>
+                        <td>{{ $type->slug }}</td>
                         <td>
                             <ul class="d-flex gap-1 list-unstyled m-0">
-                                <li><a href="{{ route('admin.project.show', $project) }}"
+                                <li><a href="{{ route('admin.types.show', $type) }}"
                                         class="btn btn-sm btn-success">Dettaglio</a></li>
-                                <li><a href="{{ route('admin.project.edit', $project) }}"
+                                <li><a href="{{ route('admin.types.edit', $type) }}"
                                         class="btn btn-sm btn-warning">Modifica</a></li>
                                 <li>
                                     <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                        data-bs-target="#delete{{ $project->id }}">
+                                        data-bs-target="#delete{{ $type->id }}">
                                         Elimina
                                     </button>
                                 </li>
                             </ul>
                         </td>
                     </tr>
-                    <div class="modal fade" id="delete{{ $project->id }}" tabindex="-1"
+                    <div class="modal fade" id="delete{{ $type->id }}" tabindex="-1"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -74,10 +64,10 @@
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <div>Eliminare il progetto n°{{$project->id}}: {{ $project->nome }} ?</div>
+                                    <div>Eliminare il progetto n°{{$type->id}}: {{ $type->nome }} ?</div>
                                 </div>
                                 <div class="modal-footer">
-                                    <form action="{{ route('admin.project.destroy', $project) }}" method="POST">
+                                    <form action="{{ route('admin.project.destroy', $type) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="btn btn-secondary"
