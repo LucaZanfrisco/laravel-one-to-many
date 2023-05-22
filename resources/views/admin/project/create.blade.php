@@ -12,6 +12,7 @@
             @error('nome')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+            
             <div class="my-3">
                 <label for="type_id" class="form-label fs-5 fw-bold">Tipologia</label>
                 <select name="type_id" id="type_id" class="form-select">

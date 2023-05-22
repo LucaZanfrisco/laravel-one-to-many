@@ -6,7 +6,7 @@
             <ul class="list-unstyled ">
                 <li><a href="{{ route('admin.project.index')}}" class="btn btn-sm btn-danger">Back</a></li>
                 <li>
-                    <h2 class="fs-4 my-4">
+                    <h2 class="fs-3 my-4">
                         {{ $project->nome }}
                     </h2>
                 </li>
