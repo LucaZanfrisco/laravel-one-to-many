@@ -30,7 +30,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.project.create');
+        $types = Type::all();
+        return view('admin.project.create',compact('types'));
     }
 
     /**
@@ -45,7 +46,6 @@ class ProjectController extends Controller
         
         $project = new Project();
         if(isset($data['immagine'])){
-            dd($data['immagine']);
             $project->immagine = Storage::put('uploads', $data['immagine']);
         }
         
@@ -76,7 +76,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.project.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.project.edit', compact('project','types'));
     }
 
     /**

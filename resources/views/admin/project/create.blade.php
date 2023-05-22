@@ -13,6 +13,15 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
             <div class="my-3">
+                <label for="type_id" class="form-label fs-5 fw-bold">Tipologia</label>
+                <select name="type_id" id="type_id" class="form-select">
+                    <option value="">Selezionare una tipologia</option>
+                    @foreach ($types as $type)
+                        <option value="{{ $type->id }}" {{ old('type_id') == $type->id ? 'selected' : '' }}>{{ $type->nome }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="my-3">
                 <label for="immagine" class="form-label fs-5 fw-bold">Selezione un file immagine da inserire</label>
                 <input class="form-control @error('immagine') is-invalid @enderror" type="file" id="immagine"
                     name="immagine">
