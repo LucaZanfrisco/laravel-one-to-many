@@ -67,7 +67,7 @@
                                     <div>Eliminare il progetto n°{{$type->id}}: {{ $type->nome }} ?</div>
                                 </div>
                                 <div class="modal-footer">
-                                    <form action="{{ route('admin.project.destroy', $type) }}" method="POST">
+                                    <form action="{{ route('admin.types.destroy', $type) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="button" class="btn btn-secondary"
