@@ -1,0 +1,18 @@
+@import '~bootstrap/scss/bootstrap';
+.circle{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+.done{
+    background-color: lightgreen;
+}
+.work{
+    background-color: red;
+}
+.my-bg-success{
+    background-color: rgb(206, 226, 217);
+}
+.hidden{
+    display: none;
+}
