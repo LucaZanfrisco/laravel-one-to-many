@@ -9,6 +9,11 @@ class Type extends Model
 {
     use HasFactory;
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+    
     public function projects(){
         return $this->hasMany(Project::class);
     }

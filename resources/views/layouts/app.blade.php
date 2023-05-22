@@ -56,7 +56,10 @@
                                 <a class="nav-link" style="{{ Route::current()->getName() === 'admin.dashboard' ? 'color: red; text-decoration: underline' : ''}}" href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" style="{{ Route::current()->getName() === 'admin.project.index' ? 'color: red; text-decoration: underline' : ''}}" href="{{ route('admin.project.index') }}">{{ __('Project') }}</a>
+                                <a class="nav-link" style="{{ Route::current()->getName() === 'admin.project.index' ? 'color: red; text-decoration: underline' : ''}}" href="{{ route('admin.project.index') }}">{{ __('Progetti') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="{{ Route::current()->getName() === 'admin.type.index' ? 'color: red; text-decoration: underline' : ''}}" href="{{ route('admin.type.index') }}">{{ __('Tipologie') }}</a>
                             </li>
                         @endguest
                     </ul>
